@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PredatorPrey : MonoBehaviour
+{
+    Rigidbody myRb;
+    public Transform target;
+    public float thrustAmt = 3f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        myRb = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        myRb.AddForce(Vector3.Normalize(target.position - transform.position) * thrustAmt);    
+
+    }
+}
