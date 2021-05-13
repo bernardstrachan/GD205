@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PredatorAwareness : MonoBehaviour
+{
+    Rigidbody myRb;
+    public Transform target;
+    public float thrustAmt = 3f;
+
+    public float awarenessThresh = 5f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        myRb = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (Vector3.Distance(target.position, transform.position) < awarenessThresh){
+            myRb.AddForce(Vector3.Normalize(target.position - transform.position) * thrustAmt);
+        }
+    }
+
+}
