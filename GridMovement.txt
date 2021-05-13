@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NewBehaviourScript : MonoBehaviour
+{
+
+    public Vector3 fwd, bwd, lft, rgt, up, dwn;
+    public Transform[] hazard;
+    public Transform key, door, newRoom, oldRoom;
+    Vector3 startPos;
+    public bool hasKey;
+    public AudioSource speaker;
+    public AudioClip hazardClip;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        startPos = transform.position;
+        hasKey = false;
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+
+            Debug.Log("you pressed w :)");
+            transform.position += fwd;
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            transform.position += bwd;
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            transform.position += lft;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.position += rgt;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            transform.position += dwn;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            transform.position += up;
+
+
+
+        }
+    }
+}
