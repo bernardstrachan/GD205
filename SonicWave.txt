@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SonicWave : MonoBehaviour
+{
+
+    public float explosionForce = 5f;
+
+    int howManyThingsHit = 0;
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        Ray laser = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit hit = new RaycastHit();
+
+        if (Physics.Raycast(laser, out hit, 10000f))
+        {
+            Debug.Log("you hit" + hit.transform.gameObject.name);
+            //hit.transform.localScale += new Vector3(1f, 1f, 1f);
+            if (hit.rigidbody && hit.transform && hit.transform != transform)
+            {
+                hit.rigidbody.AddExplosionForce(explosionForce, hit.point, 10F, 3F);
+
+                howManyThingsHit++;
+                Debug.Log("you hit" + howManyThingsHit + "things");
+            }
+        }
+
+
+    }
+}
